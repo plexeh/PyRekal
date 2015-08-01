@@ -9,6 +9,7 @@ import sys
 
 def menu(cam):
 	option = 0 
+	print "---------------------"
 	print "Rekall - text edition"
 	print "---------------------"
 	print "options:"
@@ -23,6 +24,7 @@ def menu(cam):
 	print "9) quit"
 	print "select an option between 1 and 5"
 	option = input('[1-8]: ')
+	print "---------------------"
 	if option == 1:
 		if cam.power == 1:
 			cam.poweroff()
@@ -46,7 +48,8 @@ def menu(cam):
 		cam.downloadnew()
 		#processnew()
 	elif option == 8:
-		print "hurry up and write the function"
+		print "deleting all"
+		cam.deleteall()
 	elif option == 9:
 		sys.exit()
 	else:

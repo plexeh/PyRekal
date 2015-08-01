@@ -135,7 +135,7 @@ class camera:
 		for file in hitlist:
 			print url+file
 			u = urllib2.urlopen(url+file)
-			f = open(os.getcwd()+'/unprocessed/'+file.split('/',1)[1], 'wb')
+			f = open(os.getcwd()+'/content/video/unprocessed/'+file.split('/',1)[1], 'wb')
 			meta = u.info()
 			file_size = int(meta.getheaders("Content-Length")[0])
 			print "Downloading: %s Bytes: %s" % (file, file_size)
@@ -159,10 +159,23 @@ class camera:
 
 	def setmode(this):
 		#set resolution and recording mode
+		
+		return
+	def setorientation(this,direction):
+		#direction up = 00, down = 01
+		if direction == 'up':
+			dir = 00
+		elif direction == 'down':
+			dir = 01
+		else:
+			print 'use this function correctly'
+			return
+		urllib2.urlopen('http://10.5.5.9/camera/UP?t='+this.password+'&p=%'+dir)
 		return
 
 	def deleteall(this):
 		#delete all recordings on camera
+		urllib2.urlopen('http://10.5.5.9/camera/DA?t='+this.password)
 		return
 
 	def watchlive(this):
